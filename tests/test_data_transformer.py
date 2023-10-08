@@ -1,9 +1,12 @@
-from pyspark.sql import SparkSession
+from pyspark.sql import SparkSession, DataFrame
 from src.data_transformer import DataTransformer
 
 
 class TestDataTransformer:
-    def test_transform_to_year_month(self, spark: SparkSession, sample_data):
+    def test_transform_to_year_month(self, spark: SparkSession, sample_data: DataFrame):
+        """
+        Tests whether the `year` and `month` columns are created.
+        """
         transformer = DataTransformer(spark)
         transformed_df = transformer.transform_to_year_month(sample_data)
 
