@@ -11,3 +11,5 @@ jobs:
 
       - name: Run tests in Docker container
         uses: docker://luijkr/unittestingpyspark:latest
+        with:
+          platforms: linux/amd64
