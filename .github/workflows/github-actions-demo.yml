@@ -1,9 +1,13 @@
 name: GitHub Actions for PySpark
+
 run-name: GitHub Actions for Unit Testing PySpark
+
 on: [push]
+
 jobs:
-  Test-PySpark-Applicaiton:
+  test-pyspark-applicaiton:
     runs-on: ubuntu-latest
+
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
