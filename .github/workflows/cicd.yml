@@ -2,7 +2,7 @@ name: GitHub Actions for PySpark
 
 run-name: GitHub Actions for Unit Testing PySpark
 
-on: [push, workflow_dispatch]
+on: [push]
 
 jobs:
   test-pyspark-applicaiton:
