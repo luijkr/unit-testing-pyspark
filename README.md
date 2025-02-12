@@ -28,3 +28,6 @@ docker push yourusername/unittestingpyspark:latest
 
 ## Using a Docker container in a CI pipeline
 
+This Docker image is used in the CI pipeline defined in `.github/workflows/test.yml`. This pipeline will
+- Build the Docker container
+- Run the unit tests using `pytest`
