@@ -5,7 +5,7 @@ run-name: GitHub Actions for Unit Testing PySpark
 on: [push]
 
 jobs:
-  test-pyspark-applicaiton:
+  test-pyspark-application:
     runs-on: ubuntu-latest
 
     steps:
