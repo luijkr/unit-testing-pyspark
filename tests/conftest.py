@@ -15,7 +15,7 @@ def spark():
     """
     Fixture for creating a SparkSession.
     """
-    spark = SparkSession.builder.appName("TestApp").master("local[*]").getOrCreate()
+    spark = SparkSession.builder.appName("TestApp").getOrCreate()
     yield spark
     spark.stop()
 
