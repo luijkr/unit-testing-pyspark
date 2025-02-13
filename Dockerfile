@@ -10,4 +10,4 @@ COPY . /
 RUN pip install -r requirements.txt
 
 # Run the unit tests by invoking pytest
-ENTRYPOINT ["pytest", "."]
+CMD ["pytest", "."]
