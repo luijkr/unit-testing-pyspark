@@ -1,25 +1,18 @@
 from pyspark.sql import SparkSession, DataFrame
 
 
-class DataLoader:
-    def __init__(self, spark) -> None:
-        self.spark = spark
+def load_taxi_data(
+    spark: SparkSession, table_name: str = "samples.nyctaxi.trips"
+) -> DataFrame:
+    """
+    Load the NYC taxi dataset from the `samples` catalog.
 
-    def load(self, filepath: str) -> DataFrame:
-        """
-        Load the NYC taxi dataset from the given file path.
+    Parameters:
+        spark (SparkSession): Spark session object.
 
-        Parameters:
-            filepath (str): Path to the dataset file.
+    Returns:
+        DataFrame: Loaded DataFrame containing the NYC taxi data.
+    """
+    df: DataFrame = spark.table(table_name)
 
-        Returns:
-            DataFrame: Loaded DataFrame containing the NYC taxi data.
-        """
-        df: DataFrame = (
-            self.spark.read.format("csv")
-            .option("header", True)
-            .option("delimiter", ",")
-            .load(filepath)
-        )
-
-        return df
+    return df
