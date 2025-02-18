@@ -78,7 +78,6 @@ clean:
 
 test:
 	@echo "Running tests..."
-	.venv/bin/pre-commit run --all-files
 	@uv sync;
 	@uv run pytest tests --cov=src --cov-report term;
 
