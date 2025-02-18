@@ -1,9 +1,13 @@
 name: Run Unit Tests
 
+# run these unit tests on every push to the main branch and after a PR has been created
 on:
   pull_request:
   push:
+    branches:
+      - main
 
+# specify the environment variables that are usually in the ~/.databrickscfg file
 env:
     DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
     DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
