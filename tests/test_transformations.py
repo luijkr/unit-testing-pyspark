@@ -9,14 +9,10 @@ from unit_testing_pyspark.transformations import filter_active_users
 
 @pytest.fixture(scope="session")
 def spark() -> SparkSession:
-    """
-    Fixture for creating a SparkSession instance.
-
-    First tries to create a DatabricksSession instance, then falls back to a SparkSession instance.
-    """
+    """Fixture for creating a SparkSession instance."""
     try:
         return DatabricksSession.builder.getOrCreate()
-    except Exception:
+    except ValueError:
         return SparkSession.builder.getOrCreate()
 
 
