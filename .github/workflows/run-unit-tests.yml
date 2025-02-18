@@ -15,23 +15,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
       - name: Run unit tests
         run: |
-          pytest -v tests
-    #   - name: Run test notebook
-    #     uses: databricks/run-notebook@main
-    #     with:
-    #       databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
-    #       local-notebook-path: notebooks/run_unit_tests.py
-    #       git-commit: "${{ github.event.pull_request.head.sha }}"
-
-    #       # Grant all users view permission on the notebook's results, so that they can
-    #       # see the result of the notebook, if they have related access permissions.
-    #       access-control-list-json: >
-    #         [
-    #           {
-    #             "group_name": "users",
-    #             "permission_level": "CAN_VIEW"
-    #           }
-    #         ]
-    #       run-name: "EDA transforms helper module unit tests"
+          uv run pytest tests --cov=src
