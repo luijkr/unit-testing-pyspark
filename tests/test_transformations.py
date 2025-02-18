@@ -10,10 +10,11 @@ from unit_testing_pyspark.transformations import filter_active_users
 @pytest.fixture(scope="session")
 def spark() -> SparkSession:
     """Fixture for creating a SparkSession instance."""
-    try:
-        return DatabricksSession.builder.getOrCreate()
-    except ValueError:
-        return SparkSession.builder.getOrCreate()
+    local_session = SparkSession.getActiveSession()
+    if local_session is not None:
+        return local_session
+
+    return DatabricksSession.builder.getOrCreate()
 
 
 def test_filter_active_users(spark: SparkSession) -> None:
