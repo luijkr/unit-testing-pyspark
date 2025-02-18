@@ -5,7 +5,8 @@ on:
   push:
 
 env:
-  DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+    DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+    DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
 
 jobs:
   unit-test-notebook:
@@ -18,14 +19,6 @@ jobs:
 
       - name: Install uv
         uses: astral-sh/setup-uv@v5
-
-      - name: Configure Databricks Connect
-        run: |
-          touch ~/.databrickscfg
-          echo "[DEFAULT]" >> ~/.databrickscfg
-          echo "host = ${{ secrets.DATABRICKS_HOST }}" >> ~/.databrickscfg
-          echo "token = ${{ secrets.DATABRICKS_TOKEN }}" >> ~/.databrickscfg
-          echo "serverless_compute_id = auto" >> ~/.databrickscfg
 
       - name: Run unit tests
         run: |
