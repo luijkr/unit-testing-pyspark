@@ -22,6 +22,12 @@ jobs:
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           local-notebook-path: notebooks/run_unit_tests.py
           git-commit: "${{ github.event.pull_request.head.sha }}"
+          new-cluster-json: |
+            {
+              "num_workers": 1,
+              "spark_version": "11.3.x-scala2.12",
+              "node_type_id": "serverless"
+            }
 
           # Grant all users view permission on the notebook's results, so that they can
           # see the result of the notebook, if they have related access permissions.
