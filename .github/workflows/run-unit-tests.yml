@@ -21,10 +21,11 @@ jobs:
 
       - name: Configure Databricks Connect
         run: |
-          mkdir -p ~/.databricks
-          echo "[DEFAULT]" > ~/.databricks/.databrickscfg
-          echo "host = ${{ secrets.DATABRICKS_HOST }}" >> ~/.databricks/.databrickscfg
-          echo "token = ${{ secrets.DATABRICKS_TOKEN }}" >> ~/.databricks/.databrickscfg
+          touch ~/.databrickscfg
+          echo "[DEFAULT]" >> ~/.databrickscfg
+          echo "host = ${{ secrets.DATABRICKS_HOST }}" >> ~/.databrickscfg
+          echo "token = ${{ secrets.DATABRICKS_TOKEN }}" >> ~/.databrickscfg
+          echo "serverless_compute_id = auto" >> ~/.databrickscfg
 
       - name: Run unit tests
         run: |
