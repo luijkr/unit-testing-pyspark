@@ -19,4 +19,4 @@ jobs:
         uses: astral-sh/setup-uv@v5
       - name: Run unit tests
         run: |
-          uv --group unit-testing run pytest tests --cov=src
+          uv run pytest tests --cov=src --group unit-testing
