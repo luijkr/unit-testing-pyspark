@@ -1,6 +1,6 @@
 [project]
 name = "unit_testing_pyspark"
-version = "0.1.0"
+version = ""
 description = "Unit testing PySpark code on Databricks"
 authors = [
     { name = "René Luijk", email = "luijk.r@gmail.com" },
