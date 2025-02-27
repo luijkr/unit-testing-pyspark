@@ -1,11 +1,19 @@
 name: Run Unit Tests
 
-# run these unit tests on every push to the main branch and after a PR has been created
+# Run unit tests after every push to the main branch
+# and after a PR has been created or updated.
 on:
-  pull_request:
-  push:
-    branches:
-      - main
+    push:
+      branches:
+        - main
+      paths:
+        - 'src/**'
+        - 'test/**'
+    pull_request:
+      paths:
+          - 'src/**'
+          - 'test/**'
+      types: [opened, synchronize, reopened]
 
 # specify the environment variables that are usually in the ~/.databrickscfg file
 env:
